@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Austin Computer — Mac Repair, Software & AI Setup in Austin, TX</title>
+<meta name="description" content="On-site Mac repair, software configuration, and AI tutoring & agent setup in Austin, Texas. By appointment.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #1C2128;
+    --ink-soft: #3A4250;
+    --paper: #F7F5F0;
+    --panel: #EDEAE2;
+    --amber: #E8973C;
+    --amber-dim: #C97E2A;
+    --teal: #3D6B7D;
+    --line: rgba(28,33,40,0.12);
+    --ok-green: #4A9B6E;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-body: 'Source Sans 3', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, svg { display: block; max-width: 100%; }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(247,245,240,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 76px;
+  }
+  .logo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo .dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--ok-green);
+    box-shadow: 0 0 0 3px rgba(74,155,110,0.18);
+    flex-shrink: 0;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .nav-links a { text-decoration: none; opacity: 0.75; transition: opacity .15s; }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 18px;
+    border-radius: 7px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: background .15s;
+  }
+  .nav-cta:hover { background: var(--ink-soft); }
+
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 88px 0 96px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 880px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 22px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 22px;
+  }
+  h1 .accent { color: var(--amber-dim); }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 480px;
+    margin-bottom: 34px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--amber);
+    color: #21160a;
+    font-weight: 600;
+    padding: 14px 26px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: transform .12s ease, box-shadow .12s ease;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(232,151,60,0.35); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    font-weight: 600;
+    padding: 14px 24px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: var(--font-body);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
+  .btn-secondary:hover { border-color: var(--ink-soft); }
+
+  /* ---------- Status panel (signature element) ---------- */
+  .panel {
+    background: var(--ink);
+    border-radius: 14px;
+    padding: 26px 26px 22px;
+    color: #D8DCE1;
+    font-family: var(--font-mono);
+    box-shadow: 0 24px 48px -16px rgba(28,33,40,0.35);
+    position: relative;
+  }
+  .panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .panel-head .label {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    opacity: 0.55;
+    text-transform: uppercase;
+  }
+  .blink-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--ok-green);
+    animation: blink 2.4s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74,155,110,0.5); }
+    50% { opacity: 0.65; box-shadow: 0 0 0 5px rgba(74,155,110,0); }
+  }
+  .panel-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.88rem;
+    padding: 9px 0;
+    border-bottom: 1px dashed rgba(255,255,255,0.08);
+  }
+  .panel-row:last-of-type { border-bottom: none; }
+  .panel-row .k { opacity: 0.55; }
+  .panel-row .v { color: #fff; font-weight: 500; }
+  .panel-row .v.ready { color: var(--ok-green); }
+  .panel-status {
+    margin-top: 18px;
+    font-size: 0.78rem;
+    color: var(--ok-green);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  @media (max-width: 880px) {
+    .panel { max-width: 420px; }
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section { padding: 86px 0; }
+  .section-head { max-width: 620px; margin-bottom: 52px; }
+  .section-head .eyebrow { margin-bottom: 14px; }
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-bottom: 14px;
+  }
+  .section-head p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  /* ---------- STATES (services) ---------- */
+  .states { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .state-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .state {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 28px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .state:last-child { border-bottom: none; }
+
+  @media (max-width: 760px) {
+    .state {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 28px 0;
+    }
+    .state-arrow { justify-self: flex-start; transform: rotate(90deg); margin-left: 4px; }
+  }
+
+  .state-before, .state-after {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .state-after { text-align: right; }
+  @media (max-width: 760px) { .state-after { text-align: left; } }
+
+  .state-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+  .state-before .state-tag { color: var(--ink-soft); }
+  .state-after .state-tag { color: var(--ok-green); }
+
+  .state-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.25rem;
+  }
+  .state-desc {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    max-width: 320px;
+  }
+  .state-after .state-desc { margin-left: auto; }
+  @media (max-width: 760px) { .state-after .state-desc { margin-left: 0; } }
+
+  .state-arrow {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--amber-dim);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+  .step {
+    padding: 26px;
+    background: var(--panel);
+    border-radius: 12px;
+    border: 1px solid var(--line);
+  }
+  .step .num {
+    font-family: var(--font-mono);
+    color: var(--teal);
+    font-size: 0.85rem;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .step h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  .step p { color: var(--ink-soft); font-size: 0.94rem; }
+
+  /* ---------- ABOUT / TRUST ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; gap: 32px; } }
+  .about-grid p { color: var(--ink-soft); margin-bottom: 16px; }
+  .facts {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .fact {
+    display: flex;
+    gap: 14px;
+    padding: 16px;
+    background: var(--panel);
+    border-radius: 10px;
+    border: 1px solid var(--line);
+  }
+  .fact .fk {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--teal);
+    min-width: 110px;
+    flex-shrink: 0;
+  }
+  .fact .fv { font-weight: 500; }
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 80px 0;
+  }
+  .cta-band .eyebrow { color: var(--amber); justify-content: center; }
+  .cta-band .eyebrow::before { display: none; }
+  .cta-band h2 { color: #fff; }
+  .cta-band p { color: rgba(255,255,255,0.65); max-width: 480px; margin: 0 auto 30px; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 40px 0;
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+  .footer-row a { text-decoration: none; }
+  .footer-row .logo { font-size: 1rem; color: var(--ink); }
+
+  /* ---------- POPUP TRIGGER (floating) ---------- */
+  .float-trigger {
+    position: fixed;
+    bottom: 26px;
+    right: 26px;
+    z-index: 100;
+    background: var(--amber);
+    color: #21160a;
+    font-family: var(--font-body);
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 22px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 10px 30px -8px rgba(232,151,60,0.55);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    transition: transform .15s ease;
+  }
+  .float-trigger:hover { transform: translateY(-2px); }
+  .float-trigger .blink-dot { background: #21160a; opacity: 0.6; animation: none; width: 7px; height: 7px; }
+
+  @media (max-width: 600px) {
+    .float-trigger span.full { display: none; }
+  }
+
+  /* ---------- MODAL ---------- */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(20,23,28,0.55);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(2px);
+  }
+  .modal-backdrop.open { display: flex; }
+
+  .modal {
+    background: var(--paper);
+    border-radius: 16px;
+    max-width: 460px;
+    width: 100%;
+    max-height: 88vh;
+    overflow-y: auto;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.4);
+    font-family: var(--font-body);
+  }
+
+  .modal-head {
+    background: var(--ink);
+    color: #fff;
+    padding: 20px 24px;
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+  }
+  .modal-head-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+  .modal-close {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 1.3rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+  }
+  .modal-close:hover { color: #fff; }
+
+  .modal-body { padding: 26px 24px 28px; }
+
+  .chat-log {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .bubble {
+    background: var(--panel);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 0.93rem;
+    max-width: 90%;
+    animation: rise .25s ease;
+  }
+  .bubble.user {
+    background: var(--ink);
+    color: #fff;
+    margin-left: auto;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .choice-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .choice-btn {
+    text-align: left;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 13px 15px;
+    font-size: 0.93rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: var(--font-body);
+    color: var(--ink);
+    transition: border-color .12s, background .12s;
+  }
+  .choice-btn:hover { border-color: var(--amber-dim); background: #FFF8EE; }
+
+  .field-group { display: flex; flex-direction: column; gap: 14px; }
+  .field-group label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: -8px;
+  }
+  .field-group input, .field-group textarea {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+  }
+  .field-group input:focus, .field-group textarea:focus {
+    outline: 2px solid var(--teal);
+    outline-offset: 1px;
+  }
+
+  .modal-submit {
+    margin-top: 18px;
+    width: 100%;
+    background: var(--amber);
+    color: #21160a;
+    font-weight: 600;
+    padding: 13px;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.97rem;
+    cursor: pointer;
+    font-family: var(--font-body);
+  }
+  .modal-submit:hover { background: var(--amber-dim); }
+  .modal-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .modal-foot-note {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    text-align: center;
+    margin-top: 14px;
+  }
+
+  .success-state {
+    text-align: center;
+    padding: 18px 0 6px;
+  }
+  .success-state .check {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: rgba(74,155,110,0.12);
+    color: var(--ok-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    font-size: 1.5rem;
+  }
+  .success-state h3 {
+    font-family: var(--font-display);
+    margin-bottom: 8px;
+  }
+  .success-state p { color: var(--ink-soft); font-size: 0.93rem; }
+
+  .progress-bar {
+    height: 4px;
+    background: var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--amber);
+    border-radius: 4px;
+    transition: width .3s ease;
+    width: 20%;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .blink-dot { animation: none; }
+    .bubble { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* Focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+  }
+</style>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="dot"></span> <span id="navBusinessName">Austin Computer</span></div>
+    <div class="nav-links" id="navLinks"></div>
+    <button class="nav-cta" id="navCta" onclick="openModal()">Get help now</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow" id="heroTagline"></div>
+      <h1 id="heroHeadline"></h1>
+      <p class="hero-sub" id="heroSubtext"></p>
+      <div class="hero-actions">
+        <button class="btn-primary" id="heroPrimaryBtn" onclick="openModal()"></button>
+        <a class="btn-secondary" id="heroSecondaryBtn" href="#"></a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <span class="label" id="panelLabel"></span>
+        <span class="blink-dot" aria-hidden="true"></span>
+      </div>
+      <div id="panelRows"></div>
+      <div class="panel-status"><span class="blink-dot" style="animation:none;"></span> <span id="panelFooter"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="states" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" id="servicesEyebrow"></div>
+      <h2 id="servicesHeading"></h2>
+      <p id="servicesSubtext"></p>
+    </div>
+    <div class="state-list" id="stateList"></div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" id="howEyebrow"></div>
+      <h2 id="howHeading"></h2>
+      <p id="howSubtext"></p>
+    </div>
+    <div class="steps" id="stepsList"></div>
+  </div>
+</section>
+
+<section id="about" style="background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <div class="wrap about-grid">
+    <div id="aboutText">
+      <div class="eyebrow" id="aboutEyebrow"></div>
+      <h2 id="aboutHeading"></h2>
+    </div>
+    <div class="facts" id="aboutFacts"></div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <div class="eyebrow" id="ctaEyebrow"></div>
+    <h2 id="ctaHeading"></h2>
+    <p id="ctaSubtext"></p>
+    <button class="btn-primary" id="ctaButton" onclick="openModal()"></button>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="logo" style="display:flex;align-items:center;gap:10px;"><span class="dot"></span><span id="footerBusinessName"></span></div>
+    <div id="footerLine"></div>
+    <a id="footerPhone" href="#"></a>
+  </div>
+</footer>
+
+<!-- Floating trigger -->
+<button class="float-trigger" onclick="openModal()" aria-haspopup="dialog">
+  <span class="blink-dot"></span>
+  <span class="full" id="floatFull"></span>
+  <span class="short" id="floatShort" style="display:none;"></span>
+</button>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <span class="blink-dot" style="animation:none;background:var(--amber);"></span>
+        <span id="modalTitle"></span>
+      </div>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <!-- populated by JS -->
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---------------------------------------------------------------
+  // CONFIG — replace with your Web3Forms access key
+  // Get one free at https://web3forms.com (takes ~30 seconds, emails
+  // submissions straight to the inbox you register with).
+  // ---------------------------------------------------------------
+  const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+
+  // ---------------------------------------------------------------
+  // All site text/content lives in content.json — edit that file,
+  // not this script, to change wording, services, contact info, etc.
+  // ---------------------------------------------------------------
+  let CONTENT = null;
+  let FLOW = null;
+
+  async function loadContent() {
+    try {
+      const res = await fetch('content.json', { cache: 'no-store' });
+      CONTENT = await res.json();
+      FLOW = CONTENT.triageFlow;
+      renderPage();
+    } catch (err) {
+      document.body.innerHTML = '<p style="padding:40px;font-family:sans-serif;">Could not load content.json. Make sure it sits in the same folder as this page.</p>';
+      console.error(err);
+    }
+  }
+
+  function renderPage() {
+    const c = CONTENT;
+
+    // <title> / meta description
+    document.title = c.site.title;
+    document.querySelector('meta[name="description"]').setAttribute('content', c.site.description);
+
+    // Nav
+    document.getElementById('navBusinessName').textContent = c.site.businessName;
+    document.getElementById('navCta').textContent = c.nav.ctaLabel;
+    const navLinks = document.getElementById('navLinks');
+    navLinks.innerHTML = c.nav.links.map(l => `<a href="${l.href}">${l.label}</a>`).join('');
+
+    // Hero
+    document.getElementById('heroTagline').textContent = c.site.tagline;
+    document.getElementById('heroHeadline').innerHTML = c.hero.headline;
+    document.getElementById('heroSubtext').textContent = c.hero.subtext;
+    document.getElementById('heroPrimaryBtn').textContent = c.hero.primaryButton;
+    const secondaryBtn = document.getElementById('heroSecondaryBtn');
+    secondaryBtn.textContent = c.hero.secondaryButton;
+    secondaryBtn.href = c.site.phoneHref;
+
+    document.getElementById('panelLabel').textContent = c.hero.panel.label;
+    document.getElementById('panelRows').innerHTML = c.hero.panel.rows.map(r =>
+      `<div class="panel-row"><span class="k">${r.key}</span><span class="v${r.highlight ? ' ready' : ''}">${r.value}</span></div>`
+    ).join('');
+    document.getElementById('panelFooter').textContent = c.hero.panel.footer;
+
+    // Services / states
+    document.getElementById('servicesEyebrow').textContent = c.services.eyebrow;
+    document.getElementById('servicesHeading').textContent = c.services.heading;
+    document.getElementById('servicesSubtext').textContent = c.services.subtext;
+    document.getElementById('stateList').innerHTML = c.services.states.map(s => `
+      <div class="state">
+        <div class="state-before">
+          <span class="state-tag">Before</span>
+          <span class="state-title">${s.beforeTitle}</span>
+          <span class="state-desc">${s.beforeDesc}</span>
+        </div>
+        <div class="state-arrow">→</div>
+        <div class="state-after">
+          <span class="state-tag">After</span>
+          <span class="state-title">${s.afterTitle}</span>
+          <span class="state-desc">${s.afterDesc}</span>
+        </div>
+      </div>
+    `).join('');
+
+    // How it works
+    document.getElementById('howEyebrow').textContent = c.howItWorks.eyebrow;
+    document.getElementById('howHeading').textContent = c.howItWorks.heading;
+    document.getElementById('howSubtext').textContent = c.howItWorks.subtext;
+    document.getElementById('stepsList').innerHTML = c.howItWorks.steps.map(s => `
+      <div class="step">
+        <span class="num">${s.num}</span>
+        <h3>${s.title}</h3>
+        <p>${s.desc}</p>
+      </div>
+    `).join('');
+
+    // About
+    document.getElementById('aboutEyebrow').textContent = c.about.eyebrow;
+    document.getElementById('aboutHeading').textContent = c.about.heading;
+    const aboutText = document.getElementById('aboutText');
+    c.about.paragraphs.forEach(p => {
+      const el = document.createElement('p');
+      el.textContent = p;
+      aboutText.appendChild(el);
+    });
+    document.getElementById('aboutFacts').innerHTML = c.about.facts.map(f =>
+      `<div class="fact"><span class="fk">${f.key}</span><span class="fv">${f.value}</span></div>`
+    ).join('');
+
+    // CTA band
+    document.getElementById('ctaEyebrow').textContent = c.ctaBand.eyebrow;
+    document.getElementById('ctaHeading').textContent = c.ctaBand.heading;
+    document.getElementById('ctaSubtext').textContent = c.ctaBand.subtext;
+    document.getElementById('ctaButton').textContent = c.ctaBand.buttonLabel;
+
+    // Footer
+    document.getElementById('footerBusinessName').textContent = c.site.businessName;
+    document.getElementById('footerLine').textContent = c.footer.line;
+    const footerPhone = document.getElementById('footerPhone');
+    footerPhone.textContent = c.site.phone;
+    footerPhone.href = c.site.phoneHref;
+
+    // Floating trigger
+    document.getElementById('floatFull').textContent = c.floatTrigger.label;
+    document.getElementById('floatShort').textContent = c.floatTrigger.shortLabel;
+
+    // Modal title
+    document.getElementById('modalTitle').textContent = c.modal.headerTitle;
+  }
+
+  // ---------------------------------------------------------------
+  // Triage popup logic (uses FLOW loaded from content.json)
+  // ---------------------------------------------------------------
+  let path = [];
+  let currentNode = "start";
+
+  const backdrop = document.getElementById('modalBackdrop');
+  const body = document.getElementById('modalBody');
+
+  function openModal() {
+    if (!FLOW) return; // content not loaded yet
+    path = [];
+    currentNode = "start";
+    backdrop.classList.add('open');
+    renderTriage();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    backdrop.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop.classList.contains('open')) closeModal();
+  });
+
+  function progressPercent() {
+    const depth = path.length;
+    return Math.min(20 + depth * 25, 90);
+  }
+
+  function renderTriage() {
+    const node = FLOW[currentNode];
+
+    let chatHtml = '<div class="chat-log">';
+    path.forEach(p => {
+      chatHtml += `<div class="bubble">${p.question}</div>`;
+      chatHtml += `<div class="bubble user">${p.answer}</div>`;
+    });
+    chatHtml += `<div class="bubble">${node.bot}</div>`;
+    chatHtml += '</div>';
+
+    let progressHtml = `<div class="progress-bar"><div class="progress-fill" style="width:${progressPercent()}%"></div></div>`;
+
+    if (node.contactForm) {
+      body.innerHTML = progressHtml + chatHtml + `
+        <div class="field-group">
+          <label for="f-name">Your name</label>
+          <input type="text" id="f-name" required>
+          <label for="f-phone">Phone number</label>
+          <input type="tel" id="f-phone" required>
+          <label for="f-email">Email (optional)</label>
+          <input type="email" id="f-email">
+          <label for="f-notes">Anything else we should know?</label>
+          <textarea id="f-notes" rows="3"></textarea>
+        </div>
+        <button class="modal-submit" id="submitBtn" onclick="submitLead()">${CONTENT.modal.submitLabel}</button>
+        <div class="modal-foot-note">${CONTENT.modal.footNote}</div>
+      `;
+    } else {
+      let choicesHtml = '<div class="choice-grid">';
+      node.choices.forEach(c => {
+        choicesHtml += `<button class="choice-btn" onclick="choose('${c.label.replace(/'/g, "\\'")}', '${c.next}')">${c.label}</button>`;
+      });
+      choicesHtml += '</div>';
+      body.innerHTML = progressHtml + chatHtml + choicesHtml;
+    }
+
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function choose(label, next) {
+    const node = FLOW[currentNode];
+    path.push({ question: node.bot, answer: label });
+    currentNode = next;
+    renderTriage();
+  }
+
+  async function submitLead() {
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const notes = document.getElementById('f-notes').value.trim();
+
+    if (!name || !phone) {
+      alert('Please fill in your name and phone number.');
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    const summary = path.map(p => `${p.question} → ${p.answer}`).join('\n');
+
+    const payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: `New lead from ${CONTENT.site.businessName} site: ${name}`,
+      from_name: `${CONTENT.site.businessName} Website`,
+      name: name,
+      phone: phone,
+      email: email || "not provided",
+      message: `TRIAGE SUMMARY:\n${summary}\n\nADDITIONAL NOTES:\n${notes || "none"}`
+    };
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const result = await res.json();
+
+      if (result.success) {
+        showSuccess();
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = CONTENT.modal.submitLabel;
+      alert(`Something went wrong sending your request. Please call ${CONTENT.site.phone} directly.`);
+    }
+  }
+
+  function showSuccess() {
+    body.innerHTML = `
+      <div class="success-state">
+        <div class="check">✓</div>
+        <h3>${CONTENT.modal.successTitle}</h3>
+        <p>${CONTENT.modal.successBody}<br><br>Need it faster? Call <a href="${CONTENT.site.phoneHref}" style="color:var(--amber-dim);font-weight:600;">${CONTENT.site.phone}</a>.</p>
+      </div>
+    `;
+    setTimeout(closeModal, 4000);
+  }
+
+  loadContent();
+</script>
+
+</body>
+</html>
