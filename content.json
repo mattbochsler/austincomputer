@@ -18,7 +18,7 @@
   },
 
   "hero": {
-    "headline": "Your Mac, fixed.<br>Your software, <span class=\"accent\">configured.</span><br>Your AI, working.",
+    "headline": "Your Mac <span class=\"accent\">fixed.</span><br>Your software <span class=\"accent\">configured.</span><br>Your AI <span class=\"accent\">working.</span>",
     "subtext": "Mac repair, software setup, and AI tutoring & agent configuration — for people and small businesses around Austin. One technician, no call center, no guesswork.",
     "primaryButton": "Tell us what's wrong →",
     "secondaryButton": "Call 303-225-1852",
@@ -38,6 +38,7 @@
     "eyebrow": "What we fix",
     "heading": "Every visit starts broken and ends working.",
     "subtext": "Three kinds of problems, one appointment. Here's the before and after of each.",
+    "pricingNote": "Per-hour and per-job pricing available upon request.",
     "states": [
       {
         "beforeTitle": "Mac is broken",
