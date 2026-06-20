@@ -1,0 +1,166 @@
+{
+  "site": {
+    "title": "Austin Computer — Mac Repair, Software & AI Setup in Austin, TX",
+    "description": "Mac repair, software configuration, and AI tutoring & agent setup in Austin, Texas. By appointment — in person or online.",
+    "businessName": "Austin Computer",
+    "phone": "303-225-1852",
+    "phoneHref": "tel:3032251852",
+    "tagline": "Austin, TX · By appointment · In person or online"
+  },
+
+  "nav": {
+    "links": [
+      { "label": "Services", "href": "#services" },
+      { "label": "How it works", "href": "#how" },
+      { "label": "About", "href": "#about" }
+    ],
+    "ctaLabel": "Get help now"
+  },
+
+  "hero": {
+    "headline": "Your Mac, fixed.<br>Your software, <span class=\"accent\">configured.</span><br>Your AI, working.",
+    "subtext": "Mac repair, software setup, and AI tutoring & agent configuration — for people and small businesses around Austin. One technician, no call center, no guesswork.",
+    "primaryButton": "Tell us what's wrong →",
+    "secondaryButton": "Call 303-225-1852",
+    "panel": {
+      "label": "Service status",
+      "rows": [
+        { "key": "Device", "value": "MacBook Pro 14\"" },
+        { "key": "Issue", "value": "Won't boot past logo" },
+        { "key": "Diagnosis", "value": "Corrupt startup disk" },
+        { "key": "Status", "value": "Repaired on-site", "highlight": true }
+      ],
+      "footer": "Ready for pickup"
+    }
+  },
+
+  "services": {
+    "eyebrow": "What we fix",
+    "heading": "Every visit starts broken and ends working.",
+    "subtext": "Three kinds of problems, one appointment. Here's the before and after of each.",
+    "states": [
+      {
+        "beforeTitle": "Mac is broken",
+        "beforeDesc": "Won't start, runs slow, full of malware, cracked screen, dead battery, or just acting strange.",
+        "afterTitle": "Mac is fixed",
+        "afterDesc": "Diagnosed and repaired — hardware, OS issues, malware removal, or full tune-up."
+      },
+      {
+        "beforeTitle": "Software is confusing",
+        "beforeDesc": "New machine, new app, or a setup that's never quite worked the way it should.",
+        "afterTitle": "Software is configured",
+        "afterDesc": "Set up properly once, with everything talking to everything else the way it's supposed to."
+      },
+      {
+        "beforeTitle": "AI feels like a black box",
+        "beforeDesc": "You've heard ChatGPT or AI agents could help your work, but don't know where to start — or you want a custom agent built.",
+        "afterTitle": "AI is working for you",
+        "afterDesc": "Tutored on the tools that matter, or set up with a working agent and API integration built for your actual workflow."
+      }
+    ]
+  },
+
+  "howItWorks": {
+    "eyebrow": "Process",
+    "heading": "How a visit works",
+    "subtext": "No drop-off counters, no waiting in line. Just tell us the problem — we'll come to you or hop on a call.",
+    "steps": [
+      {
+        "num": "01 — Describe it",
+        "title": "Tell us what's going on",
+        "desc": "A couple questions about your device and the problem — takes under a minute."
+      },
+      {
+        "num": "02 — Schedule",
+        "title": "We call to confirm",
+        "desc": "You'll hear back to set up an appointment — in person or online — at a time that works for you."
+      },
+      {
+        "num": "03 — Resolved",
+        "title": "We fix it, in person or online",
+        "desc": "Repaired, configured, or set up — whichever works better for you, with no guesswork either way."
+      }
+    ]
+  },
+
+  "about": {
+    "eyebrow": "About",
+    "heading": "One technician. No middleman.",
+    "paragraphs": [
+      "Austin Computer is independent — every repair, setup, and AI project is handled directly, not routed through a queue. That means a real diagnosis instead of a script, and a fix that's actually built for your setup.",
+      "From a cracked MacBook screen to a working AI agent connected to your business tools — it's the same person who shows up or hops on the call, and the same person you can reach back out to."
+    ],
+    "facts": [
+      { "key": "Service area", "value": "Austin, TX &amp; surrounding areas" },
+      { "key": "Availability", "value": "By appointment — in person or online" },
+      { "key": "Specialty", "value": "Mac repair &amp; configuration" },
+      { "key": "Also offered", "value": "AI tutoring, agent setup &amp; API integration" },
+      { "key": "Contact", "value": "303-225-1852" }
+    ]
+  },
+
+  "ctaBand": {
+    "eyebrow": "Ready when you are",
+    "heading": "Something not working right?",
+    "subtext": "Answer a couple quick questions and we'll follow up to schedule your appointment.",
+    "buttonLabel": "Start here →"
+  },
+
+  "footer": {
+    "line": "By appointment · Austin, TX"
+  },
+
+  "floatTrigger": {
+    "label": "What's wrong?",
+    "shortLabel": "Help"
+  },
+
+  "modal": {
+    "headerTitle": "Austin Computer — Quick Triage",
+    "contactFormIntro": "Got it. Leave your info and we'll call or email to set up a time.",
+    "submitLabel": "Send & request callback",
+    "footNote": "We'll reach out by phone or email to schedule your appointment.",
+    "successTitle": "Got it!",
+    "successBody": "Thanks — we'll call or email you shortly to schedule your appointment."
+  },
+
+  "triageFlow": {
+    "start": {
+      "bot": "Hey! What can we help with today?",
+      "choices": [
+        { "label": "Mac repair", "next": "mac_issue" },
+        { "label": "Software setup", "next": "sw_issue" },
+        { "label": "AI tutoring or agent setup", "next": "ai_issue" },
+        { "label": "Something else", "next": "contact" }
+      ]
+    },
+    "mac_issue": {
+      "bot": "Got it — what's happening with the Mac?",
+      "choices": [
+        { "label": "Won't turn on / boot", "next": "contact" },
+        { "label": "Running slow", "next": "contact" },
+        { "label": "Possible virus or malware", "next": "contact" },
+        { "label": "Screen, battery, or hardware damage", "next": "contact" }
+      ]
+    },
+    "sw_issue": {
+      "bot": "What kind of setup do you need?",
+      "choices": [
+        { "label": "New computer setup", "next": "contact" },
+        { "label": "An app or account isn't working right", "next": "contact" },
+        { "label": "Syncing devices / accounts together", "next": "contact" }
+      ]
+    },
+    "ai_issue": {
+      "bot": "Is this for personal use or for a business?",
+      "choices": [
+        { "label": "Personal — want to learn AI tools", "next": "contact" },
+        { "label": "Business — want a custom AI agent or API setup", "next": "contact" }
+      ]
+    },
+    "contact": {
+      "bot": "Got it. Leave your info and we'll call or email to set up a time.",
+      "contactForm": true
+    }
+  }
+}
