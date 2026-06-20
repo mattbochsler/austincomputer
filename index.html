@@ -14,10 +14,11 @@
   :root {
     --ink: #1C2128;
     --ink-soft: #3A4250;
-    --paper: #F7F5F0;
+    --paper: #FFFFFF;
     --panel: #EDEAE2;
-    --amber: #E8973C;
-    --amber-dim: #C97E2A;
+    --amber: #FFCC00;
+    --amber-dim: #E6B800;
+    --hero-accent: #C97E2A;
     --teal: #3D6B7D;
     --line: rgba(28,33,40,0.12);
     --ok-green: #4A9B6E;
@@ -29,7 +30,7 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: auto; }
 
   body {
     background: var(--paper);
@@ -54,7 +55,7 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(247,245,240,0.92);
+    background: rgba(255,255,255,0.92);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--line);
   }
@@ -67,7 +68,7 @@
   .logo {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.15rem;
+    font-size: 1.35rem;
     letter-spacing: -0.01em;
     display: flex;
     align-items: center;
@@ -151,8 +152,9 @@
     font-weight: 700;
     letter-spacing: -0.02em;
     margin-bottom: 22px;
+    text-align: center;
   }
-  h1 .accent { color: var(--amber-dim); }
+  h1 .accent { color: var(--hero-accent); }
 
   .hero-sub {
     font-size: 1.15rem;
@@ -180,7 +182,7 @@
     transition: transform .12s ease, box-shadow .12s ease;
     box-shadow: 0 1px 0 rgba(0,0,0,0.08);
   }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(232,151,60,0.35); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(255,204,0,0.35); }
 
   .btn-secondary {
     background: transparent;
@@ -271,6 +273,12 @@
   .section-head p {
     color: var(--ink-soft);
     font-size: 1.05rem;
+  }
+  .pricing-note {
+    margin-top: 14px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--ink);
   }
 
   /* ---------- STATES (services) ---------- */
@@ -445,7 +453,7 @@
     padding: 15px 22px;
     font-size: 0.95rem;
     cursor: pointer;
-    box-shadow: 0 10px 30px -8px rgba(232,151,60,0.55);
+    box-shadow: 0 10px 30px -8px rgba(255,204,0,0.55);
     display: flex;
     align-items: center;
     gap: 9px;
@@ -673,7 +681,7 @@
       </div>
     </div>
 
-    <div class="panel">
+    <div class="panel" data-parallax="0.18">
       <div class="panel-head">
         <span class="label" id="panelLabel"></span>
         <span class="blink-dot" aria-hidden="true"></span>
@@ -690,6 +698,7 @@
       <div class="eyebrow" id="servicesEyebrow"></div>
       <h2 id="servicesHeading"></h2>
       <p id="servicesSubtext"></p>
+      <p class="pricing-note" id="servicesPricingNote"></p>
     </div>
     <div class="state-list" id="stateList"></div>
   </div>
@@ -815,6 +824,7 @@
     document.getElementById('servicesEyebrow').textContent = c.services.eyebrow;
     document.getElementById('servicesHeading').textContent = c.services.heading;
     document.getElementById('servicesSubtext').textContent = c.services.subtext;
+    document.getElementById('servicesPricingNote').textContent = c.services.pricingNote;
     document.getElementById('stateList').innerHTML = c.services.states.map(s => `
       <div class="state">
         <div class="state-before">
@@ -1016,6 +1026,73 @@
     `;
     setTimeout(closeModal, 4000);
   }
+
+  // ---------------------------------------------------------------
+  // Smooth eased scrolling for in-page anchor links.
+  // Uses an ease-in-out-ish curve with a touch of acceleration at
+  // the start, rather than the browser's linear smooth-scroll.
+  // ---------------------------------------------------------------
+  function easeScroll(targetY, duration = 900) {
+    const startY = window.scrollY;
+    const diff = targetY - startY;
+    const startTime = performance.now();
+
+    function step(now) {
+      const elapsed = now - startTime;
+      const t = Math.min(elapsed / duration, 1);
+      // Slight acceleration into a gentle settle: cubic ease-in-out
+      const eased = t < 0.5
+        ? 4 * t * t * t
+        : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      window.scrollTo(0, startY + diff * eased);
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    const id = link.getAttribute('href');
+    if (id.length <= 1) return;
+    const target = document.querySelector(id);
+    if (!target) return;
+    e.preventDefault();
+    const headerOffset = 76;
+    const targetY = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+    easeScroll(targetY);
+  });
+
+  // ---------------------------------------------------------------
+  // Lightweight parallax: elements with [data-parallax] drift at a
+  // fraction of normal scroll speed for subtle depth on scroll.
+  // ---------------------------------------------------------------
+  function initParallax() {
+    const layers = Array.from(document.querySelectorAll('[data-parallax]'));
+    if (!layers.length) return;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    let ticking = false;
+    function update() {
+      const vh = window.innerHeight;
+      layers.forEach(el => {
+        const speed = parseFloat(el.getAttribute('data-parallax')) || 0.15;
+        const rect = el.getBoundingClientRect();
+        const centerOffset = rect.top + rect.height / 2 - vh / 2;
+        el.style.transform = `translateY(${(centerOffset * speed * -0.15).toFixed(2)}px)`;
+      });
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
+    update();
+  }
+  window.addEventListener('DOMContentLoaded', initParallax);
 
   loadContent();
 </script>
