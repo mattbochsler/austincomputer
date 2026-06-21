@@ -81,6 +81,11 @@
     box-shadow: 0 0 0 3px rgba(74,155,110,0.18);
     flex-shrink: 0;
   }
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
   .nav-links {
     display: flex;
     gap: 32px;
@@ -759,7 +764,7 @@
 
 <header>
   <nav class="wrap">
-    <div class="logo"><span class="dot"></span> <span id="navBusinessName">Austin Computer</span></div>
+    <div class="logo"><img src="logo.svg" alt="Austin Computer" class="logo-mark"> <span id="navBusinessName">Austin Computer</span></div>
     <div class="nav-links" id="navLinks"></div>
     <button class="nav-cta" id="navCta" onclick="openModal()">Get help now</button>
   </nav>
