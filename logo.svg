@@ -1,0 +1,23 @@
+<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Austin Computer logo">
+  <defs>
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bfe6c9"/>
+      <stop offset="100%" stop-color="#a9d8ee"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="30" cy="30" r="30" fill="url(#badgeGrad)"/>
+
+  <path d="M14.5 -2 L45.5 -2 Q47 -2 47 -0.5 L47 19 L13 19 L13 -0.5 Q13 -2 14.5 -2 Z" fill="#ffffff" stroke="#1C2128" stroke-width="1.75" transform="translate(0,15)"/>
+
+  <circle cx="30" cy="14.5" r="0.45" fill="#1C2128"/>
+  <circle cx="24.5" cy="17.7" r="0.85" fill="#1C2128"/>
+  <circle cx="35.5" cy="17.7" r="0.85" fill="#1C2128"/>
+  <path d="M25 20.7 Q30 24 35 20.7" fill="none" stroke="#1C2128" stroke-width="0.65" stroke-linecap="round"/>
+
+  <path d="M9.5 34 L50.5 34 L53.5 39 L6.5 39 Z" fill="#ffffff" stroke="#1C2128" stroke-width="1.75"/>
+  <line x1="22" y1="36.5" x2="38" y2="36.5" stroke="#1C2128" stroke-width="1.4" stroke-linecap="round"/>
+
+  <circle cx="41.5" cy="39" r="5" fill="#FFCC00" stroke="#ffffff" stroke-width="0.75"/>
+  <path d="M39.4 39 L41.1 40.7 L44.2 36.5" fill="none" stroke="#C97E2A" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
