@@ -57,6 +57,12 @@
         "beforeDesc": "You've heard ChatGPT or AI agents could help your work, but don't know where to start — or you want a custom agent built.",
         "afterTitle": "AI is working for you",
         "afterDesc": "Tutored on the tools that matter, or set up with a working agent and API integration built for your actual workflow."
+      },
+      {
+        "beforeTitle": "Your store can't keep up",
+        "beforeDesc": "High order volume, outdated product pages, or a storefront that wasn't built to scale with demand.",
+        "afterTitle": "Store is built to move",
+        "afterDesc": "E-commerce site design and updates built for high-turnover catalogs — fast listings, clean checkout, no bottlenecks."
       }
     ]
   },
